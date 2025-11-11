@@ -1,77 +1,109 @@
 import { useState } from "react";
 import "./gitrandomrep.css";
+
 function GitHubRandomRep() {
-  let [language, setLanguage] = useState("Enter a Language");
-  const [repo, setRepo] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [language, setLanguage] = useState(""); // initially empty
+  const [loadingRepos, setLoadingRepos] = useState(false);
+  const [loadingRandom, setLoadingRandom] = useState(false);
+  const [repo, setRepo] = useState([]);
+  const [randomRepo, setRandomRepo] = useState(null);
   const [error, setError] = useState("");
-  const fetchRepo = async () => {
-    setLoading(true);
+
+  // Fetch repositories based on selected language
+  const getRepos = async () => {
+    if (!language) {
+      setError("Please select a language.");
+      return;
+    }
+
+    setLoadingRepos(true);
     setError("");
-    setRepo(null);
-
     try {
-      const url = `https://api.github.com/search/repositories?q=language:${language}&sort=stars&order=desc&per_page=100`;
+      const url = `https://api.github.com/search/repositories?q=language:${language}&per_page=30`;
       const res = await fetch(url);
-      if (!res.ok) throw new Error("GitHub API error");
-
+      if (!res.ok) throw new Error("GitHub API Error");
       const data = await res.json();
-      const items = data.items;
-
-      if (!items || items.length === 0) {
-        setError("No repositories found.");
-        setLoading(false);
-        return;
-      }
-
-      const randomRepo = items[Math.floor(Math.random() * items.length)];
-      setRepo(randomRepo);
+      setRepo(data.items || []);
+      setRandomRepo(null); // reset randomRepo when fetching new list
     } catch (err) {
       setError(err.message);
-    } finally {
-      setLoading(false);
     }
+    setLoadingRepos(false);
   };
+
+  // Pick random repo from existing repo array
+  const getRandomRepo = () => {
+    if (repo.length === 0) {
+      setError("No repositories loaded. Please fetch repositories first.");
+      return;
+    }
+    setLoadingRandom(true);
+    const random = repo[Math.floor(Math.random() * repo.length)];
+    setRandomRepo(random);
+    setLoadingRandom(false);
+  };
+
   return (
-    <>
-      <div className="app-container">
-        <h1>GitHub Repository Finder</h1>
+    <div className="app-container">
+      <h1>GitHub Repository Finder</h1>
 
-        <div className="controls">
-          <select onChange={(e) => setLanguage(e.target.value)}>
-            <option>{language}</option>
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="java">Java</option>
-            <option value="cpp">C++</option>
-            <option value="php">PHP</option>
-            <option value="go">Go</option>
-            <option value="ruby">Ruby</option>
-          </select>
-          <button onClick={fetchRepo} disabled={loading}>
-            {loading ? "Loading..." : "Find Repository"}
-          </button>
+      <div className="controls">
+        <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+          <option value="">Enter a Language</option>
+          <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="cpp">C++</option>
+          <option value="php">PHP</option>
+          <option value="go">Go</option>
+          <option value="ruby">Ruby</option>
+        </select>
 
-          <button onClick={fetchRepo} disabled={loading || !repo}>
-            Another Random Repo
-          </button>
-        </div>
-        {repo && (
-          <div className="repo-card">
-            <h2>
-              <a href={repo.html_url} target="_blank">
-                {repo.full_name}
-              </a>
-            </h2>
-            <p>{repo.description}</p>
-            <div>
-              ⭐ {repo.stargazers_count} | 🍴 {repo.forks_count} | 🐞{" "}
-              {repo.open_issues_count} | 👤 {repo.owner.login}
-            </div>
-          </div>
-        )}
+        <button onClick={getRepos}>
+          {loadingRepos ? "Loading..." : "Find Repositories"}
+        </button>
+
+        <button onClick={getRandomRepo}>
+          {loadingRandom ? "Loading..." : "Find Random Repository"}
+        </button>
       </div>
-    </>
+
+      {error && <p className="error">{error}</p>}
+
+      {randomRepo && (
+        <div
+          className="repo-card"
+          style={{ border: "2px solid red", margin: "10px" }}
+        >
+          <h2>
+            <a href={randomRepo.html_url} target="_blank" rel="noreferrer">
+              {randomRepo.full_name}
+            </a>
+          </h2>
+          <p>{randomRepo.description}</p>
+          <div>
+            🟡 language: {language} | ⭐ {randomRepo.stargazers_count} | 🍴{" "}
+            {randomRepo.forks_count} | 🐞 {randomRepo.open_issues_count} | 👤{" "}
+            {randomRepo.owner?.login}
+          </div>
+        </div>
+      )}
+      {repo.map((item) => (
+        <div className="repo-card" key={item.id}>
+          <h2>
+            <a href={item.html_url} target="_blank" rel="noreferrer">
+              {item.full_name}
+            </a>
+          </h2>
+          <p>{item.description}</p>
+          <div>
+            ⭐ {item.stargazers_count} | 🍴 {item.forks_count} | 🐞{" "}
+            {item.open_issues_count} | 👤 {item.owner?.login}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
+
 export default GitHubRandomRep;
