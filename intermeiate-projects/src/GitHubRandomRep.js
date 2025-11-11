@@ -68,6 +68,8 @@ function GitHubRandomRep() {
         </button>
       </div>
 
+      {error && <p className="error">{error}</p>}
+
       {randomRepo && (
         <div
           className="repo-card"
