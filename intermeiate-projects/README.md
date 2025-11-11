@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## 🔗 Project Page
-[View the Project on GitHub](https://github.com/Naqash879/React-Projects/tree/main/intermeiate-projects)
+[View the Project on GitHub][(https://github.com/Naqash879/React-Projects/tree/main/intermeiate-projects)](https://roadmap.sh/projects/github-random-repo)
 
 ## Available Scripts
 
