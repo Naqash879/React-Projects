@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## 🔗 Project Page
+
+View the project details on roadmap.sh:  
+👉 [https://roadmap.sh/projects/github-random-repo](https://roadmap.sh/projects/github-random-repo)
+
+---
+
 ## Available Scripts
 
 In the project directory, you can run:
