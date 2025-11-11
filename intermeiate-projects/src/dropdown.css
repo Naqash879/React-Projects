@@ -1,0 +1,16 @@
+.heading-dropdown
+{
+    display: flex;
+    justify-content: center;
+}
+.container-Dropdown
+{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.selected-Item
+{
+display: flex;
+    justify-content: center;
+}
