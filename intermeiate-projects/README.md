@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ## 🔗 Project Page
-[GitHub Random Repo](https://roadmap.sh/projects/github-random-repo)  
+ 
 [Reddit Client](https://roadmap.sh/projects/reddit-client)
 
 
