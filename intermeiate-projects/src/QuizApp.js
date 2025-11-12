@@ -25,28 +25,45 @@ function QuizApp() {
   const [quizQuestions, setQuizQuestion] = useState([]);
   const [finalScore, setFinalScore] = useState(0);
   const [disabledButtons, setDisabledButtons] = useState([]);
-  const [showCorrectAnswer, setShowCorrectAnswer] = useState("");
+
   useEffect(() => {
     setQuizQuestion(addQuestions);
     setDisabledButtons(new Array(addQuestions.length).fill(false));
   }, []);
 
+  const handleClick = (e, q, index) => {
+    const clickedValue = e.target.value;
+    const correctValue = q.Answer;
+
+    const newDisabled = [...disabledButtons];
+    newDisabled[index] = true;
+    setDisabledButtons(newDisabled);
+
+    const buttons = e.target.parentElement.querySelectorAll("button");
+    buttons.forEach((btn) => {
+      if (btn.value === correctValue) btn.style.background = "green";
+      else if (btn.value === clickedValue) btn.style.background = "red";
+    });
+    if (clickedValue === correctValue) setFinalScore(finalScore + 1);
+    else setFinalScore(finalScore - 1);
+  };
+
   return (
     <div className="quiz-wrapper">
       <h1>Welcome to the Quiz!</h1>
       <p>Press start to begin the quiz.</p>
+
       <button
         className="start-btn"
         onClick={() => {
           setShowQuiz(true);
           setFinalScore(0);
-          setShowCorrectAnswer("");
-          setDisabledButtons(new Array(addQuestions.length).fill(false));
         }}
         disabled={showQuiz}
       >
         Start Quiz
       </button>
+
       <button
         className="end-btn"
         onClick={() => setShowQuiz(false)}
@@ -54,6 +71,7 @@ function QuizApp() {
       >
         End Quiz
       </button>
+
       {showQuiz && (
         <>
           <h4>Final Score: {finalScore}</h4>
@@ -67,27 +85,7 @@ function QuizApp() {
                     key={opt}
                     value={opt}
                     disabled={disabledButtons[index]}
-                    onClick={(e) => {
-                      const newDisabled = [...disabledButtons];
-                      newDisabled[index] = true;
-                      setDisabledButtons(newDisabled);
-
-                      const buttons =
-                        e.target.parentElement.querySelectorAll("button");
-                      buttons.forEach((btn) => {
-                        if (btn.value === q.Answer)
-                          btn.style.background = "green";
-                        else if (btn === e.target) btn.style.background = "red";
-                      });
-                      if (e.target.value === q.Answer) {
-                        setFinalScore(finalScore + 1);
-                      } else {
-                        setFinalScore(finalScore - 1);
-                        setShowCorrectAnswer(
-                          "The Correct Answer was " + q.Answer
-                        );
-                      }
-                    }}
+                    onClick={(e) => handleClick(e, q, index)}
                   >
                     {opt}
                   </button>
