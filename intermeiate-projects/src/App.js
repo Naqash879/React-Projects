@@ -1,15 +1,10 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import RedditClient from "./RedditClient.js";
+import QuizApp from "./QuizApp.js";
 // import CustomDropdown from "./CustomDropdown.js";
 
 function App() {
-  return (
-    <>
-      {/* <CustomDropdown />; */}
-      <RedditClient />;
-    </>
-  );
+  return <QuizApp />;
 }
 
 export default App;
