@@ -35,7 +35,6 @@ function QuizApp() {
     <div className="quiz-wrapper">
       <h1>Welcome to the Quiz!</h1>
       <p>Press start to begin the quiz.</p>
-
       <button
         className="start-btn"
         onClick={() => {
@@ -48,7 +47,6 @@ function QuizApp() {
       >
         Start Quiz
       </button>
-
       <button
         className="end-btn"
         onClick={() => setShowQuiz(false)}
@@ -56,7 +54,7 @@ function QuizApp() {
       >
         End Quiz
       </button>
-
+      dlfdlsfjldsfkjs
       {showQuiz && (
         <>
           <h4>Final Score: {finalScore}</h4>
