@@ -1,13 +1,13 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import GitHubRandomRep from "./GitHubRandomRep.js";
+import RedditClient from "./RedditClient.js";
 // import CustomDropdown from "./CustomDropdown.js";
 
 function App() {
   return (
     <>
       {/* <CustomDropdown />; */}
-      <GitHubRandomRep />;
+      <RedditClient />;
     </>
   );
 }

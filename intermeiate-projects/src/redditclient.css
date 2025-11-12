@@ -1,0 +1,126 @@
+.reddit-app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  text-align: center;
+  color: #ff4500;
+  margin-bottom: 20px;
+}
+
+.add-lane {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.add-lane input {
+  padding: 10px;
+  font-size: 16px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-lane button {
+  padding: 10px 20px;
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-lane button:hover {
+  background-color: #e03d00;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.lanes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.lane {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.lane:hover {
+  transform: translateY(-5px);
+}
+
+.lane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.lane-buttons button {
+  background-color: #ccc;
+  color: #333;
+  padding: 5px 8px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.lane-buttons button:hover {
+  background-color: #bbb;
+}
+
+.lane h2 {
+  color: #ff4500;
+  margin: 0;
+}
+
+.lane ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lane li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.lane li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.lane li a:hover {
+  text-decoration: underline;
+  color: #ff4500;
+}
+
+@media (max-width: 650px) {
+  .lanes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lane {
+    width: 90%;
+  }
+}
