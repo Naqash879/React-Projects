@@ -27,7 +27,6 @@ function RedditClient() {
       setError("Lane already exists");
       return;
     }
-    // dsjskadhsja
     try {
       const url = "http://localhost:5000/reddit/" + cleanSub;
       const fetchData = await fetch(url);
