@@ -2,9 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
 ## 🔗 Project Page
-https://roadmap.sh/projects/github-random-repo,
-https://roadmap.sh/projects/reddit-client.
+[GitHub Random Repo](https://roadmap.sh/projects/github-random-repo)  
+[Reddit Client](https://roadmap.sh/projects/reddit-client)
+
 
 ## Available Scripts
 
