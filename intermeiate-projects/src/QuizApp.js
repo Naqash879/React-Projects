@@ -54,7 +54,6 @@ function QuizApp() {
       >
         End Quiz
       </button>
-      dlfdlsfjldsfkjs
       {showQuiz && (
         <>
           <h4>Final Score: {finalScore}</h4>
