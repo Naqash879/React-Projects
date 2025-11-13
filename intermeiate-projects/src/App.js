@@ -7,6 +7,7 @@ import QuizTimerApp from "./QuizTimerApp.js";
 
 function App() {
   return <QuizTimerApp />;
+  //Component
 }
 
 export default App;
