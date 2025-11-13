@@ -1,0 +1,13 @@
+body
+{
+    background-color: antiquewhite;
+}
+.color-container h1
+{
+text-align: center;
+}
+.color-div
+{
+    display: flex;
+   justify-content: center;
+}

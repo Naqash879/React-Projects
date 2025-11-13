@@ -1,10 +1,12 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import QuizApp from "./QuizApp.js";
+// import ExpenseTracker from "./ExpenseTracker.js";
+import QuizTimerApp from "./QuizTimerApp.js";
+// import QuizApp from "./QuizApp.js";
 // import CustomDropdown from "./CustomDropdown.js";
 
 function App() {
-  return <QuizApp />;
+  return <QuizTimerApp />;
 }
 
 export default App;

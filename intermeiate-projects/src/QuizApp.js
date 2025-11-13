@@ -58,6 +58,7 @@ function QuizApp() {
         onClick={() => {
           setShowQuiz(true);
           setFinalScore(0);
+          setDisabledButtons(new Array(addQuestions.length).fill(false));
         }}
         disabled={showQuiz}
       >

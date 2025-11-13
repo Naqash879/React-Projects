@@ -1,0 +1,81 @@
+.app-container {
+  max-width: 500px;
+  margin: 50px auto;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.balance h2 {
+  font-size: 24px;
+  margin: 20px 0;
+}
+.less-balance
+{
+    color: red;
+}
+
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.transaction-form input,
+.transaction-form select,
+.transaction-form button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.transaction-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.transaction-form button:hover {
+  background: #0056b3;
+}
+
+.transaction-history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transaction-history li {
+  display: flex;
+  justify-content: space-between;
+  background: #eee;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.transaction-history li.income {
+  border-left: 5px solid green;
+}
+
+.transaction-history li.expense {
+  border-left: 5px solid red;
+}
+
+.transaction-history li button {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.transaction-history li button:hover {
+  background: darkred;
+}
